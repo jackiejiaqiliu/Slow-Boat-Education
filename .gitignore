@@ -4,6 +4,7 @@
 !.env.example
 node_modules/
 dist/
+.astro/
 
 # Editor and local temporary files
 .idea/
