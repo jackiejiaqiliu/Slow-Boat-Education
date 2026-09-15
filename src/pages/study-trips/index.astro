@@ -1,0 +1,52 @@
+---
+import classesImage from '../../../assets/images/classes.jpg?url';
+import clinicalObservationImage from '../../../assets/images/clinical-observation.jpg?url';
+import culturalExperiencesImage from '../../../assets/images/cultural-experiences.jpg?url';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout heroClass="study-trips-hero">
+    <div slot="hero" class="study-trips-banner">
+        <h1>Study Trips</h1>
+    </div>
+
+    <section class="study-intro">
+        <div class="study-intro-content">
+            <div class="study-heading">
+                <span class="study-tag">Coming Soon</span>
+            </div>
+            <p class="study-intro-text">
+                Immersive, small-cohort trips in partnership with leading TCM universities and hospitals in China, combining classes, clinical observation, research, and guided cultural experiences.
+            </p>
+            <div class="study-photos">
+                <div class="study-card">
+                    <img src={classesImage} alt="TCM instructor teaching from a classical text">
+                    <h3>Classes & Case Studies</h3>
+                    <p>Train alongside faculty from renowned Chinese TCM universities through curated lectures, small-group seminars, and live case discussions.</p>
+                </div>
+                <div class="study-card">
+                    <img src={clinicalObservationImage} alt="Clinicians in discussion at a hospital">
+                    <h3>Clinical Observation & Research</h3>
+                    <p>Observe outpatient and inpatient care, follow real patient cases, and explore opportunities to engage with ongoing clinical and academic research.</p>
+                </div>
+                <div class="study-card">
+                    <img src={culturalExperiencesImage} alt="Students exploring a traditional Chinese setting">
+                    <h3>Guided Cultural Experiences</h3>
+                    <p>Visit historical sites, museums, and neighborhoods that bring the cultural, philosophical, and everyday context of TCM to life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="study-cta">
+        <h2>In the Meanwhile, We Want to Hear From You</h2>
+        <p>Our unique partnerships allow for flexibility in designing the curriculum and experiences around your passion. Share your preferences — topics, lengths, and the kind of experiences you're looking for — and help shape what we build.</p>
+        <a href="https://forms.gle/your-form-id" target="_blank" rel="noopener noreferrer" class="study-cta-link">Let us know!</a>
+    </section>
+
+    <Fragment slot="scripts">
+        <script>
+            import '../../../scripts/main.js';
+        </script>
+    </Fragment>
+</BaseLayout>
