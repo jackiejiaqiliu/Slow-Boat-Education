@@ -124,7 +124,7 @@ footer{
 
 /* home page */
 .home-hero{
-    background-image: url("../assets/home.jpg");
+    background-image: url("../assets/images/home.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -253,7 +253,7 @@ footer{
 
 /* online courses page */
 .online-courses-hero{
-    background-image: url("../assets/banner-online-courses.png");
+    background-image: url("../assets/images/banner-online-courses.png");
     background-repeat: no-repeat;
     background-size: cover;
     aspect-ratio: 7/2;
@@ -425,7 +425,7 @@ footer{
 
 /* study trips page */
 .study-trips-hero{
-    background-image: url("../assets/banner-study-trips.png");
+    background-image: url("../assets/images/banner-study-trips.png");
     background-repeat: no-repeat;
     background-size: cover;
     aspect-ratio: 7/2;
@@ -553,7 +553,7 @@ footer{
 
 /* about page */
 .about-hero{
-    background-image: url("../assets/banner-about.png");
+    background-image: url("../assets/images/banner-about.png");
     background-repeat: no-repeat;
     background-size: cover;
     aspect-ratio: 7/2;
@@ -717,7 +717,7 @@ footer{
 
 /* FAQ Page */
 .faqs-hero{
-    background-image: url("../assets/banner-faqs.png");
+    background-image: url("../assets/images/banner-faqs.png");
     background-repeat: no-repeat;
     background-size: cover;
     aspect-ratio: 7/2;
