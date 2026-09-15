@@ -1,5 +1,4 @@
 ---
-import '../../../styles/main.css';
 import onlyTheVeryBestIcon from '../../../assets/icons/only_the_very_best.svg?url';
 import traditionalMeetsClinicalIcon from '../../../assets/icons/traditional_meets_clinical.svg?url';
 import withCareAndIntegrityIcon from '../../../assets/icons/with_care_and_integrity.svg?url';
@@ -9,29 +8,13 @@ import jackieLiuPhoto from '../../../assets/images/jackie-liu.jpg?url';
 import yingZhangPhoto from '../../../assets/images/ying-zhang.jpg?url';
 import nccaomLogo from '../../../assets/logos/nccaom.png?url';
 import zhongyizaixianLogo from '../../../assets/logos/zhongyizaixian.png?url';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="author" content="Slow Boat Education">
-        <meta name="description" content="Slow Boat Education">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Slow Boat Education</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="about-hero">
-            <Header />
-            <div class="about-banner">
-                <h1>About Us</h1>
-            </div>
-        </div>
+<BaseLayout heroClass="about-hero">
+    <div slot="hero" class="about-banner">
+        <h1>About Us</h1>
+    </div>
         <div class="about-info">
             <h3>Based in Chicago, Slow Boat Education brings the best Traditional Chinese Medicine (TCM) education resources from China to licensed practitioners and enthusiasts in the US.</h3>
             <p>At Slow Boat Education, we believe in the robustness and flexibility of our medicine. Therefore, we aim to connect the often isolated TCM experiences in the US and in China. Our resources are available through unique connections with top TCM universities, doctors, and educators in China. We select and curate materials based on decades of domain mastery and progressive understanding of TCM in the US in the now. With expertise guided by passion and compassion, we break barriers of language, culture, geography, time, and exclusivity.</p>
@@ -103,10 +86,9 @@ import Footer from '../../components/Footer.astro';
             </div>
         </div>
 
-        <Footer />
-
+    <Fragment slot="scripts">
         <script>
             import '../../../scripts/main.js';
         </script>
-    </body>
-</html>
+    </Fragment>
+</BaseLayout>

@@ -1,61 +1,41 @@
 ---
-import '../../styles/main.css';
 import onlineCoursesImage from '../../assets/images/online-courses.png?url';
 import studyTripsImage from '../../assets/images/study-trips-large.png?url';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="author" content="Slow Boat Education">
-        <meta name="description" content="Slow Boat Education">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Slow Boat Education</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="home-hero">
-            <Header />
-            <div class="home-banner">
-                <div class="home-title">
-                    <h1>5,000 Years of Medical Wisdom</h1>
-                    <p>Curated from the Source</p>
-                </div>
+<BaseLayout heroClass="home-hero">
+    <div slot="hero" class="home-banner">
+        <div class="home-title">
+            <h1>5,000 Years of Medical Wisdom</h1>
+            <p>Curated from the Source</p>
+        </div>
+    </div>
+    <div class="home-intro">
+        <h3>Direct access to exclusive education resources from leading Traditional Chinese Medicine (TCM) institutions, practitioners, and educators in China, free from language or cultural barriers. </h3>
+    </div>
+
+    <section class="home-offerings">
+        <div class="offering-row">
+            <div class="offering-image">
+                <img src={onlineCoursesImage}>
+            </div>
+            <div class="offering-content">
+                <h2>Online Courses</h2>
+                <p>Learn from renowned Chinese TCM scholars and clinicians through carefully selected courses, human-translated and adapted by TCM experts. Our courses span classical texts and contemporary clinical practice, opening up previously exclusive educational resources to a global audience. NCCAOM PDA/CEU Credits available.</p>
+                <a href="/online-courses/" class="primary-button">Explore Courses</a>
             </div>
         </div>
-        <div class="home-intro">
-            <h3>Direct access to exclusive education resources from leading Traditional Chinese Medicine (TCM) institutions, practitioners, and educators in China, free from language or cultural barriers. </h3>
+
+        <div class="offering-row offering-row--reversed">
+            <div class="offering-image">
+                <img src={studyTripsImage} alt="Students overlooking a traditional Chinese courtyard">
+            </div>
+            <div class="offering-content">
+                <h2>Study Trips</h2>
+                <p>Experience Chinese medicine at its source. Partnered with top TCM hospitals, universities and institutions, our study trips combine coursework, clinical observation, and cultural immersion to show how TCM is practiced in China today.</p>
+                <a href="/study-trips/" class="primary-button">Explore Trips</a>
+            </div>
         </div>
-
-        <section class="home-offerings">
-            <div class="offering-row">
-                <div class="offering-image">
-                    <img src={onlineCoursesImage}>
-                </div>
-                <div class="offering-content">
-                    <h2>Online Courses</h2>
-                    <p>Learn from renowned Chinese TCM scholars and clinicians through carefully selected courses, human-translated and adapted by TCM experts. Our courses span classical texts and contemporary clinical practice, opening up previously exclusive educational resources to a global audience. NCCAOM PDA/CEU Credits available.</p>
-                    <a href="/online-courses/" class="primary-button">Explore Courses</a>
-                </div>
-            </div>
-
-            <div class="offering-row offering-row--reversed">
-                <div class="offering-image">
-                    <img src={studyTripsImage} alt="Students overlooking a traditional Chinese courtyard">
-                </div>
-                <div class="offering-content">
-                    <h2>Study Trips</h2>
-                    <p>Experience Chinese medicine at its source. Partnered with top TCM hospitals, universities and institutions, our study trips combine coursework, clinical observation, and cultural immersion to show how TCM is practiced in China today.</p>
-                    <a href="/study-trips/" class="primary-button">Explore Trips</a>
-                </div>
-            </div>
-        </section>
-
-        <Footer />
-    </body>
-</html>
+    </section>
+</BaseLayout>
