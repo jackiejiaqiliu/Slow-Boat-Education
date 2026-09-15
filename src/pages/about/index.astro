@@ -1,0 +1,131 @@
+---
+import '../../../styles/main.css';
+import logoLight from '../../../assets/logos/logo-light.svg?url';
+import onlyTheVeryBestIcon from '../../../assets/icons/only_the_very_best.svg?url';
+import traditionalMeetsClinicalIcon from '../../../assets/icons/traditional_meets_clinical.svg?url';
+import withCareAndIntegrityIcon from '../../../assets/icons/with_care_and_integrity.svg?url';
+import accessibleForAllIcon from '../../../assets/icons/accessible_for_all.svg?url';
+import shuboXuPhoto from '../../../assets/images/shubo-xu.jpg?url';
+import jackieLiuPhoto from '../../../assets/images/jackie-liu.jpg?url';
+import yingZhangPhoto from '../../../assets/images/ying-zhang.jpg?url';
+import nccaomLogo from '../../../assets/logos/nccaom.png?url';
+import zhongyizaixianLogo from '../../../assets/logos/zhongyizaixian.png?url';
+import instagramIcon from '../../../assets/icons/instagram.png?url';
+---
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Slow Boat Education">
+        <meta name="description" content="Slow Boat Education">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Slow Boat Education</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="about-hero">
+            <header>
+                <a href="/"><img src={logoLight}></a>
+                <nav>
+                    <a href="/online-courses/">Online Courses</a>
+                    <a href="/study-trips/">Study Trips</a>
+                    <a href="/about/">About Us</a>
+                    <a href="/faqs/">FAQs</a>
+                </nav>
+            </header>
+            <div class="about-banner">
+                <h1>About Us</h1>
+            </div>
+        </div>
+        <div class="about-info">
+            <h3>Based in Chicago, Slow Boat Education brings the best Traditional Chinese Medicine (TCM) education resources from China to licensed practitioners and enthusiasts in the US.</h3>
+            <p>At Slow Boat Education, we believe in the robustness and flexibility of our medicine. Therefore, we aim to connect the often isolated TCM experiences in the US and in China. Our resources are available through unique connections with top TCM universities, doctors, and educators in China. We select and curate materials based on decades of domain mastery and progressive understanding of TCM in the US in the now. With expertise guided by passion and compassion, we break barriers of language, culture, geography, time, and exclusivity.</p>
+        </div>
+        <div class="our-commitment">
+            <h2>Our Commitments</h2>
+            <div class="commitment-items">
+                <div class="commitment-item">
+                    <img src={onlyTheVeryBestIcon} alt="Only the very best">
+                    <h3>Only the very best</h3>
+                    <p>Curated materials and instruction from top educators, clinicians, and universities.</p>
+                </div>
+                <div class="commitment-item">
+                    <img src={traditionalMeetsClinicalIcon} alt="Traditional meets clinical">
+                    <h3>Traditional meets clinical</h3>
+                    <p>Grounded in classical theory, taught through modern, real-world clinical practice.</p>
+                </div>
+                <div class="commitment-item">
+                    <img src={withCareAndIntegrityIcon} alt="With care and integrity">
+                    <h3>With care and integrity</h3>
+                    <p>Thoughtful, ethical education designed to honor patients, practitioners, and the medicine.</p>
+                </div>
+                <div class="commitment-item">
+                    <img src={accessibleForAllIcon} alt="Accessible for all">
+                    <h3>Accessible for all</h3>
+                    <p>High-quality resources made approachable across language, geography, and experience levels.</p>
+                </div>
+            </div>
+        </div>
+        <div class="our-team">
+            <h2>Our Team</h2>
+            <div class="team-cards">
+
+                <div class="team-card">
+                    <img class="team-photo" src={shuboXuPhoto} alt="Shubo Xu">
+                    <div class="team-meta">
+                        <h3>Shubo Xu</h3>
+                        <h4>Co-Founder (Clinical & Academic Programs)</h4>
+                        <p>An applied mathematician-turned-TCM doctor, Shubo comes from a family of TCM practitioners. Having learned and trained under multiple expert TCM doctors and acupuncturists, Shubo is currently pursuing his Doctor of Acupuncture degree in Chicago. Well-acquainted to the TCM experience in the US in the now, Shubo is passionate about sharing and promoting the educational resources he has greatly benefited from with his peers. <br><br>
+                        Before pursuing TCM, Shubo earned both his undergraduate and graduate degrees in applied mathematics from the prestigious Courant Institute at New York University. He also gained extensive experience in the startup world through his role as a Technical Analyst at Endless Frontier Labs, an incubator based at NYU Stern School of Business, where he worked closely with early-stage ventures across a range of industries.</p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img class="team-photo" src={jackieLiuPhoto} alt="Jackie Liu">
+                    <div class="team-meta">
+                        <h3>Jackie Liu</h3>
+                        <h4>Co-Founder (Learning Design & Ed-Tech)</h4>
+                        <p>A current faculty member in US higher education and a long-time patient and beneficiary of Traditional Chinese Medicine, Jackie brings her pedagogical expertise to transforming TCM knowledge into structured, learner-centered curricula and support resources. Having spent half of her life in the United States and half in China, she is fluent in both cultural and educational contexts, allowing her to translate traditional knowledge into accessible instruction tailored to the US learner. Trained as a computer scientist and designer, Jackie also designs and builds the educational technology system that enables Slow Boat Education’s courses and digital learning environment. <br><br>
+                        Jackie received her undergraduate and graduate degrees from Cornell University and New York University, and holds a higher education teaching certificate from Harvard University.</p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img class="team-photo" src={yingZhangPhoto} alt="Ying Zhang">
+                    <div class="team-meta">
+                        <h3>Dr. Ying Zhang</h3>
+                        <h4>Clinical & Academic Advisor</h4>
+                        <p>An NCCAOM diplomate and an Expert Physician in multiple 3A hospitals in Beijing, including the superlative Guang’anmen Hospital of China Academy of Chinese Medical Sciences, Dr. Zhang brings decades of TCM domain expertise to Slow Boat Education. Totaling over eight thousand clinical patients annually, having authored 50+ research papers, and having mentored 40+ graduate students and junior physicians, Dr. Zhang builds her practice upon the clinical, the scholarly, and the educational. At Slow Boat Education, Dr. Zhang leverages her expertise, as well as her exposure to the US TCM experience through NCCAOM, to handpick, curate, and create top-quality educational materials. Dr. Zhang also relies on her unique and vast connections among the TCM circles in China and the US to bring forth exclusive resources that are the most-fitting for the US audience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="our-partners">
+            <h2>Our Partners</h2>
+            <div class="partners-logo">
+                <img src={nccaomLogo}>
+                <img src={zhongyizaixianLogo}>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-left">
+                <h3>Contact Us</h3>
+                <a href="mailto:info@slowboatedu.com" target="_blank">info@slowboatedu.com</a>
+            </div>
+            <div class="footer-right">
+                <div class="social-media">
+                    <a href="https://www.instagram.com/" target="_blank"><img src={instagramIcon}></a>
+                </div>
+                <p>@2026 Slow Boat Education</p>
+            </div>
+        </footer>
+
+        <script>
+            import '../../../scripts/main.js';
+        </script>
+    </body>
+</html>
