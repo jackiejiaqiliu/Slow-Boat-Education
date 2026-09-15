@@ -1,12 +1,6 @@
-import { createClient } from '@supabase/supabase-js';
+import { createBrowserClient } from '@supabase/ssr';
+import { getPublicSupabaseConfig } from './supabase-config.js';
 
-const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-const supabasePublishableKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+const { supabaseUrl, supabasePublishableKey } = getPublicSupabaseConfig();
 
-if (!supabaseUrl || !supabasePublishableKey) {
-  throw new Error(
-    'Supabase configuration is missing. Set PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_PUBLISHABLE_KEY.',
-  );
-}
-
-export const supabase = createClient(supabaseUrl, supabasePublishableKey);
+export const supabase = createBrowserClient(supabaseUrl, supabasePublishableKey);
