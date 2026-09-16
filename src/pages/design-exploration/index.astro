@@ -265,6 +265,23 @@ const navigationItems = [
                 let continuityLookup = [];
                 let continuityLength = 0;
                 let continuityGeometryKey = '';
+                let previousFrameTime = performance.now();
+                let motionNeedsFrame = false;
+                const motionValues = new WeakMap();
+                const smoothMotionValue = (element, name, target, response = 105, epsilon = 0.02, frameDelta = 16) => {
+                    let values = motionValues.get(element);
+                    if (!values) {
+                        values = new Map();
+                        motionValues.set(element, values);
+                    }
+                    const current = values.has(name) ? values.get(name) : target;
+                    const alpha = 1 - Math.exp(-frameDelta / response);
+                    const next = current + (target - current) * alpha;
+                    if (Math.abs(target - next) > epsilon) motionNeedsFrame = true;
+                    const settled = Math.abs(target - next) <= epsilon ? target : next;
+                    values.set(name, settled);
+                    return settled;
+                };
                 const pageBackgroundStops = [
                     { at: 0, color: [247, 243, 235] },
                     { at: 0.25, color: [238, 230, 218] },
@@ -282,12 +299,17 @@ const navigationItems = [
                     return lower.color.map((channel, index) => Math.round(channel + (upper.color[index] - channel) * mix));
                 };
                 const updateSceneMotion = () => {
+                    const frameTime = performance.now();
+                    const frameDelta = Math.min(32, Math.max(8, frameTime - previousFrameTime));
+                    previousFrameTime = frameTime;
+                    motionNeedsFrame = false;
                     const viewportCenter = window.innerHeight / 2;
                     for (const figure of parallaxImages) {
                         const bounds = figure.getBoundingClientRect();
                         const speed = Number(figure.dataset.parallax || 0);
                         const distance = bounds.top + bounds.height / 2 - viewportCenter;
-                        const shift = Math.max(-50, Math.min(50, distance * speed));
+                        const targetShift = Math.max(-50, Math.min(50, distance * speed));
+                        const shift = smoothMotionValue(figure, 'image-shift', targetShift, 125, 0.03, frameDelta);
                         figure.style.setProperty('--image-shift', `${shift.toFixed(2)}px`);
                     }
                     if (continuitySource && continuityLine && continuityClip && explorationMain) {
@@ -407,7 +429,7 @@ const navigationItems = [
                             const scene = statement.closest('.why-scene');
                             const sceneBounds = scene.getBoundingClientRect();
                             const stickyTravel = Math.max(1, sceneBounds.height - window.innerHeight);
-                            progress = Math.max(0, Math.min(1, -sceneBounds.top / (stickyTravel * 0.84)));
+                            progress = Math.max(0, Math.min(1, (window.innerHeight * 0.08 - sceneBounds.top) / (stickyTravel * 0.84)));
                         }
                         if (isClosingStatement) {
                             const remainingScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight - window.scrollY);
@@ -416,16 +438,29 @@ const navigationItems = [
                         }
                         const words = [...statement.querySelectorAll('span')];
                         const litPosition = progress * words.length;
-                        const unlitColor = isWhyStatement ? [184, 157, 137] : [169, 166, 145];
                         const litColor = isWhyStatement ? [124, 84, 52] : [81, 84, 53];
                         words.forEach((word, index) => {
-                            const strength = Math.max(0, Math.min(1, litPosition - index));
+                            const targetStrength = Math.max(0, Math.min(1, litPosition - index));
+                            const strength = smoothMotionValue(word, 'lit-strength', targetStrength, 90, 0.002, frameDelta);
+                            const easedStrength = strength * strength * (3 - 2 * strength);
+                            if (isWhyStatement) {
+                                word.style.color = 'rgb(124, 84, 52)';
+                                word.style.opacity = easedStrength.toFixed(3);
+                                return;
+                            }
+                            if (isClosingStatement) {
+                                const isBrownWord = ['source.', 'world.'].includes(word.textContent.trim());
+                                word.style.color = isBrownWord ? 'rgb(124, 84, 52)' : 'rgb(81, 84, 53)';
+                                word.style.opacity = easedStrength.toFixed(3);
+                                return;
+                            }
+                            const unlitColor = [169, 166, 145];
                             const wordLitColor = !isWhyStatement && ['source.', 'world.'].includes(word.textContent.trim())
                                 ? [124, 84, 52]
                                 : litColor;
-                            const red = Math.round(unlitColor[0] + (wordLitColor[0] - unlitColor[0]) * strength);
-                            const green = Math.round(unlitColor[1] + (wordLitColor[1] - unlitColor[1]) * strength);
-                            const blue = Math.round(unlitColor[2] + (wordLitColor[2] - unlitColor[2]) * strength);
+                            const red = Math.round(unlitColor[0] + (wordLitColor[0] - unlitColor[0]) * easedStrength);
+                            const green = Math.round(unlitColor[1] + (wordLitColor[1] - unlitColor[1]) * easedStrength);
+                            const blue = Math.round(unlitColor[2] + (wordLitColor[2] - unlitColor[2]) * easedStrength);
                             word.style.color = `rgb(${red}, ${green}, ${blue})`;
                         });
                     }
@@ -436,7 +471,8 @@ const navigationItems = [
                         const entryStarts = [0, 0.5];
                         courseStackCards.forEach((card, index) => {
                             const entry = Math.max(0, Math.min(1, (sectionProgress - entryStarts[index]) / 0.28));
-                            const eased = 1 - Math.pow(1 - entry, 3);
+                            const targetEased = entry * entry * (3 - 2 * entry);
+                            const eased = smoothMotionValue(card, 'stack-progress', targetEased, 115, 0.002, frameDelta);
                             card.style.setProperty('--stack-x', '0px');
                             card.style.setProperty('--stack-y', `${((1 - eased) * window.innerHeight * 0.9).toFixed(2)}px`);
                             card.style.setProperty('--stack-opacity', '1');
@@ -449,7 +485,8 @@ const navigationItems = [
                         const entryStarts = [0, 0.25, 0.5];
                         tripStackCards.forEach((card, index) => {
                             const entry = Math.max(0, Math.min(1, (sectionProgress - entryStarts[index]) / 0.28));
-                            const eased = 1 - Math.pow(1 - entry, 3);
+                            const targetEased = entry * entry * (3 - 2 * entry);
+                            const eased = smoothMotionValue(card, 'stack-progress', targetEased, 115, 0.002, frameDelta);
                             card.style.setProperty('--stack-x', '0px');
                             card.style.setProperty('--stack-y', `${((1 - eased) * window.innerHeight * 0.9).toFixed(2)}px`);
                             card.style.setProperty('--stack-opacity', '1');
@@ -462,9 +499,14 @@ const navigationItems = [
                         const range = Math.max(window.innerHeight * 0.7, bounds.height * 0.58);
                         const presence = Math.max(0, Math.min(1, 1 - distance / range));
                         scene.style.setProperty('--scene-presence', `${(0.78 + presence * 0.22).toFixed(3)}`);
-                        scene.style.setProperty('--scene-lift', `${((1 - presence) * 12).toFixed(2)}px`);
+                        const sceneLift = smoothMotionValue(scene, 'scene-lift', (1 - presence) * 12, 140, 0.02, frameDelta);
+                        scene.style.setProperty('--scene-lift', `${sceneLift.toFixed(2)}px`);
                     }
-                    ticking = false;
+                    if (motionNeedsFrame) {
+                        requestAnimationFrame(updateSceneMotion);
+                    } else {
+                        ticking = false;
+                    }
                 };
 
                 const requestSceneMotion = () => {
