@@ -1,0 +1,482 @@
+---
+import logoDark from '../../../assets/logos/logo-dark.svg?url';
+import traditionalSeriesStamp from '../../../assets/icons/traditional-text-stamp.svg?url';
+import contemporarySeriesStamp from '../../../assets/icons/contemporary-clinical-stamp.svg?url';
+import classesCaseStudiesStamp from '../../../assets/icons/classes-case-studies-stamp.svg?url';
+import clinicalObservationStamp from '../../../assets/icons/clinical-observation-stamp.svg?url';
+import guidedCulturalStamp from '../../../assets/icons/guided-cultural-stamp.svg?url';
+import homeImage from '../../../assets/images/home.jpg?url';
+import engravedBoat from '../../../assets/images/slow-boat-engraving.svg?url';
+import '../../styles/design-exploration.css';
+
+const engravedBoatUse = `${engravedBoat}#Layer_1`;
+const navigationItems = [
+    { label: 'Online Courses', href: '/online-courses/' },
+    { label: 'Study Trips', href: '/study-trips/' },
+    { label: 'About Us', href: '/about/' },
+    { label: 'FAQs', href: '/faqs/' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Slow Boat Education">
+        <meta name="description" content="Slow Boat Education homepage design exploration">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Slow Boat Education — Design Exploration</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    </head>
+    <body class="exploration-page">
+        <header class="exploration-header">
+            <a class="exploration-brand" href="/" aria-label="Slow Boat Education home"><img src={logoDark} alt="Slow Boat Education"></a>
+            <nav class="exploration-nav" aria-label="Primary navigation">
+                {navigationItems.map(({ label, href }) => (
+                    <a href={href}>{label}</a>
+                ))}
+            </nav>
+        </header>
+
+        <div class="river-layer" aria-hidden="true">
+            <svg class="continuity-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                    <linearGradient id="river-base-gradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#ddd3c6"></stop>
+                        <stop offset="28%" stop-color="#d2c5b6"></stop>
+                        <stop offset="52%" stop-color="#c6b7a5"></stop>
+                        <stop offset="80%" stop-color="#baa88f"></stop>
+                        <stop offset="100%" stop-color="#b09b84"></stop>
+                    </linearGradient>
+                    <linearGradient id="river-progress-gradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#73755c"></stop>
+                        <stop offset="28%" stop-color="#73755c"></stop>
+                        <stop offset="52%" stop-color="#73755c"></stop>
+                        <stop offset="80%" stop-color="#73755c"></stop>
+                        <stop offset="100%" stop-color="#73755c"></stop>
+                    </linearGradient>
+                    <clipPath id="river-progress-clip" clipPathUnits="userSpaceOnUse">
+                        <rect class="continuity-line__clip" x="-10" y="0" width="120" height="0"></rect>
+                    </clipPath>
+                </defs>
+                <path id="river-route" class="continuity-line__base" d="M0 0 C4 1 9 3 13 4.5 S22 8.5 20 11 S14 15.5 17 18 S10 21 14 23 S19 25 13 27 S11 29 17 31 C21 32.2 25 33.2 31 34 C38 34.9 46 34.8 52 36 C55 36.8 55 38 52 40 S43 43 46 47 S45 50 48 54 S60 57 55 61 S57 65 53 69 S43 72 47 76 S45 79 49 83 S60 85 55 87 S62 88.4 65 90 S71 91.2 69 92 S82 93 96 93.2 S108 93.5 112 94"></path>
+                <path class="continuity-line__progress" clip-path="url(#river-progress-clip)" d="M0 0 C4 1 9 3 13 4.5 S22 8.5 20 11 S14 15.5 17 18 S10 21 14 23 S19 25 13 27 S11 29 17 31 C21 32.2 25 33.2 31 34 C38 34.9 46 34.8 52 36 C55 36.8 55 38 52 40 S43 43 46 47 S45 50 48 54 S60 57 55 61 S57 65 53 69 S43 72 47 76 S45 79 49 83 S60 85 55 87 S62 88.4 65 90 S71 91.2 69 92 S82 93 96 93.2 S108 93.5 112 94"></path>
+            </svg>
+            <span class="river-boat" aria-hidden="true">
+                <svg viewBox="0 0 396.47 371.83">
+                    <defs>
+                        <clipPath id="engraved-sail-clip" clipPathUnits="userSpaceOnUse">
+                            <path d="M140 10H356V276C289 256 211 261 140 295Z"></path>
+                        </clipPath>
+                        <mask id="engraved-boat-without-sail" maskUnits="userSpaceOnUse" x="0" y="0" width="396.47" height="371.83">
+                            <rect width="396.47" height="371.83" fill="white"></rect>
+                            <path d="M140 10H356V276C289 256 211 261 140 295Z" fill="black"></path>
+                        </mask>
+                    </defs>
+                    <use class="river-boat__body" href={engravedBoatUse} width="396.47" height="371.83" mask="url(#engraved-boat-without-sail)"></use>
+                    <g class="river-boat__sails">
+                        <use class="river-boat__sail" href={engravedBoatUse} width="396.47" height="371.83" clip-path="url(#engraved-sail-clip)"></use>
+                    </g>
+                </svg>
+            </span>
+        </div>
+
+        <main class="exploration-main">
+            <section class="scene hero-scene" data-scene aria-labelledby="hero-title">
+                <div class="hero-copy">
+                    <h1 id="hero-title"><span>5,000 Years of Medical Wisdom</span></h1>
+                    <p>Curated from the Source</p>
+                </div>
+                <figure class="hero-image" data-reveal="image" data-parallax="0.045">
+                    <img src={homeImage} alt="Traditional Chinese medicine herbs being weighed by hand">
+                </figure>
+            </section>
+
+            <section class="scene why-scene" data-scene aria-labelledby="why-title">
+                <div class="why-empty" aria-hidden="true"></div>
+                <div class="why-copy">
+                    <h2 id="why-title" class="scroll-lit" data-scroll-lit><span>Direct</span> <span>access</span> <span>to</span> <span>exclusive</span> <span>education</span> <span>resources</span> <span>from</span> <span>leading</span> <span>Traditional</span> <span>Chinese</span> <span>Medicine</span> <span>institutions,</span> <span>practitioners,</span> <span>and</span> <span>educators</span> <span>in</span> <span>China—without</span> <span>language</span> <span>or</span> <span>cultural</span> <span>barriers.</span></h2>
+                </div>
+                <div class="why-illustration" data-reveal="print" aria-label="Placeholder illustration of an open text and medicinal plant">
+                    <svg viewBox="0 0 420 360" role="img" aria-hidden="true">
+                        <path class="illustration-fill" d="M55 90c63-18 117-4 155 28v177c-42-31-96-42-155-22V90Z"></path>
+                        <path class="illustration-fill illustration-fill--light" d="M365 90c-63-18-117-4-155 28v177c42-31 96-42 155-22V90Z"></path>
+                        <path class="illustration-line" d="M210 118v177M75 121c45-8 83-1 115 21M75 157c45-8 83-1 115 21M75 193c45-8 83-1 115 21"></path>
+                        <path class="illustration-stem" d="M268 247c6-62 24-116 71-153M299 166c-26-3-45-18-49-43 27-3 47 12 49 43ZM316 137c1-25 15-43 39-51 6 25-7 45-39 51ZM282 205c-25 2-45-10-54-34 25-8 47 3 54 34Z"></path>
+                    </svg>
+                </div>
+            </section>
+
+            <section class="scene courses-scene" data-scene aria-labelledby="courses-title">
+                <div class="courses-sticky">
+                    <div class="courses-identity">
+                        <h2 id="courses-title">Online Courses</h2>
+                        <p>Learn from renowned Chinese TCM scholars and clinicians through carefully selected courses, human-translated and adapted by TCM experts.</p>
+                        <a class="editorial-link" href="/online-courses/">Explore Courses <svg class="editorial-link__arrow" viewBox="0 0 28 12" aria-hidden="true"><path d="M1 6H25M19.5 1.5L25 6L19.5 10.5"></path></svg></a>
+                    </div>
+                </div>
+
+                <div class="series-sequence">
+                    <div class="course-stack-pin">
+                    <article class="series-composition traditional-composition">
+                        <img class="series-illustration series-illustration--stamp series-illustration--stamp-reverse" src={traditionalSeriesStamp} alt="">
+                        <h3>Traditional Text Series</h3>
+                        <p>Deepen your conceptual and theoretical understanding of Chinese medicine through foundational texts taught by TCM masters. For practitioners who want to return to the source.</p>
+                    </article>
+
+                    <article class="series-composition contemporary-composition">
+                        <img class="series-illustration series-illustration--stamp" src={contemporarySeriesStamp} alt="">
+                        <h3>Contemporary Clinical Series</h3>
+                        <p>Learn from clinical practice through diagnostic thinking, case strategies, and insights from experts immersed in the clinical environment of leading TCM hospitals in China.</p>
+                    </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scene trips-scene" data-scene aria-labelledby="trips-title">
+                <div class="trips-stage">
+                    <div class="trips-title courses-identity">
+                        <h2 id="trips-title">Study Trips</h2>
+                        <p>Experience Chinese medicine at its source through formal study, clinical observation, and cultural immersion.</p>
+                        <a class="editorial-link" href="/study-trips/">Explore Trips <svg class="editorial-link__arrow" viewBox="0 0 28 12" aria-hidden="true"><path d="M1 6H25M19.5 1.5L25 6L19.5 10.5"></path></svg></a>
+                    </div>
+                </div>
+
+                <div class="trip-beats">
+                    <div class="trip-stack-pin">
+                    <article class="trip-beat series-composition classes-beat">
+                        <div class="beat-copy">
+                            <img class="series-illustration series-illustration--stamp series-illustration--stamp-light" src={classesCaseStudiesStamp} alt="">
+                            <h3>Classes &amp; Case Studies</h3>
+                            <p>Train alongside faculty from renowned Chinese TCM universities through curated lectures, small-group seminars, and live case discussions.</p>
+                        </div>
+                    </article>
+
+                    <article class="trip-beat series-composition clinical-beat">
+                        <div class="beat-copy">
+                            <img class="series-illustration series-illustration--stamp series-illustration--stamp-clinical" src={clinicalObservationStamp} alt="">
+                            <h3>Clinical Observation &amp; Research</h3>
+                            <p>Observe outpatient and inpatient care, follow real patient cases, and explore opportunities to engage with ongoing clinical and academic research.</p>
+                        </div>
+                    </article>
+
+                    <article class="trip-beat series-composition culture-beat">
+                        <div class="beat-copy">
+                            <img class="series-illustration series-illustration--stamp series-illustration--stamp-cultural" src={guidedCulturalStamp} alt="">
+                            <h3>Guided Cultural Experiences</h3>
+                            <p>Visit historical sites, museums, and neighborhoods that bring the cultural, philosophical, and everyday context of TCM to life.</p>
+                        </div>
+                    </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scene closing-scene" data-scene aria-label="Explore Slow Boat Education">
+                <p class="scroll-lit" data-scroll-lit><span>Curated</span> <span>from</span> <span>the</span> <span>source.</span><br><span>Open</span> <span>to</span> <span>the</span> <span>world.</span></p>
+            </section>
+        </main>
+
+        <footer class="exploration-footer">
+            <div class="footer-meta">
+                <p>©2026 SLOW BOAT EDUCATION, ALL RIGHTS RESERVED</p>
+                <nav class="footer-legal" aria-label="Legal">
+                    <a href="/privacy-policy/">Privacy Policy</a>
+                    <span aria-hidden="true">/</span>
+                    <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
+                </nav>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="mailto:info@slowboatedu.com">info@slowboatedu.com</a>
+            </div>
+        </footer>
+
+        <script>
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            const insetTargets = [...document.querySelectorAll('.series-composition, .course-image-plate')];
+            const svgNamespace = 'http://www.w3.org/2000/svg';
+            const insetObservers = [];
+
+            for (const target of insetTargets) {
+                const inset = document.createElementNS(svgNamespace, 'svg');
+                const polygon = document.createElementNS(svgNamespace, 'polygon');
+                inset.classList.add('plate-inset');
+                inset.setAttribute('aria-hidden', 'true');
+                polygon.setAttribute('fill', 'none');
+                polygon.setAttribute('stroke', 'currentColor');
+                polygon.setAttribute('stroke-width', '1.5');
+                polygon.setAttribute('vector-effect', 'non-scaling-stroke');
+                inset.append(polygon);
+                target.append(inset);
+
+                const updateInset = () => {
+                    const insetAmount = 13;
+                    const outerCut = 26;
+                    const innerCut = outerCut + insetAmount * (Math.SQRT2 - 2);
+                    const width = Math.max(1, target.clientWidth - insetAmount * 2);
+                    const height = Math.max(1, target.clientHeight - insetAmount * 2);
+                    inset.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                    polygon.setAttribute('points', `${innerCut},0 ${width - innerCut},0 ${width},${innerCut} ${width},${height - innerCut} ${width - innerCut},${height} ${innerCut},${height} 0,${height - innerCut} 0,${innerCut}`);
+                };
+
+                updateInset();
+                const resizeObserver = new ResizeObserver(updateInset);
+                resizeObserver.observe(target);
+                insetObservers.push(resizeObserver);
+            }
+
+            if (!reduceMotion.matches) {
+                document.documentElement.classList.add('motion-ready');
+
+                const observer = new IntersectionObserver((entries) => {
+                    for (const entry of entries) {
+                        if (entry.target.hasAttribute('data-scene')) {
+                            entry.target.classList.toggle('is-current', entry.isIntersecting);
+                        } else if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    }
+                }, { rootMargin: '-12% 0px -18%', threshold: 0.08 });
+
+                document.querySelectorAll('[data-scene], [data-reveal]').forEach((element) => observer.observe(element));
+
+                const parallaxImages = [...document.querySelectorAll('[data-parallax]')];
+                const continuitySource = document.querySelector('.continuity-line__base');
+                const continuityLine = document.querySelector('.continuity-line__progress');
+                const continuityClip = document.querySelector('.continuity-line__clip');
+                const continuitySvg = document.querySelector('.continuity-line');
+                const riverLayer = document.querySelector('.river-layer');
+                const riverBoat = document.querySelector('.river-boat');
+                const explorationMain = document.querySelector('.exploration-main');
+                const scrollLitStatements = [...document.querySelectorAll('[data-scroll-lit]')];
+                const scenes = [...document.querySelectorAll('[data-scene]')];
+                const coursesScene = document.querySelector('.courses-scene');
+                const courseStackCards = [...document.querySelectorAll('.course-stack-pin .series-composition')];
+                const tripsScene = document.querySelector('.trips-scene');
+                const tripStackCards = [...document.querySelectorAll('.trip-beat')];
+                let ticking = false;
+                let previousScrollY = window.scrollY;
+                let previousMotionTime = performance.now();
+                let sailSettleTimer;
+                let continuityLookup = [];
+                let continuityLength = 0;
+                let continuityGeometryKey = '';
+                const pageBackgroundStops = [
+                    { at: 0, color: [247, 243, 235] },
+                    { at: 0.25, color: [238, 230, 218] },
+                    { at: 0.51, color: [221, 209, 192] },
+                    { at: 0.83, color: [199, 183, 162] },
+                    { at: 1, color: [208, 192, 171] }
+                ];
+                const samplePageBackground = (position) => {
+                    const clamped = Math.max(0, Math.min(1, position));
+                    const upperIndex = Math.max(1, pageBackgroundStops.findIndex((stop) => stop.at >= clamped));
+                    const lower = pageBackgroundStops[upperIndex - 1];
+                    const upper = pageBackgroundStops[upperIndex] || lower;
+                    const range = Math.max(0.0001, upper.at - lower.at);
+                    const mix = (clamped - lower.at) / range;
+                    return lower.color.map((channel, index) => Math.round(channel + (upper.color[index] - channel) * mix));
+                };
+                const updateSceneMotion = () => {
+                    const viewportCenter = window.innerHeight / 2;
+                    for (const figure of parallaxImages) {
+                        const bounds = figure.getBoundingClientRect();
+                        const speed = Number(figure.dataset.parallax || 0);
+                        const distance = bounds.top + bounds.height / 2 - viewportCenter;
+                        const shift = Math.max(-50, Math.min(50, distance * speed));
+                        figure.style.setProperty('--image-shift', `${shift.toFixed(2)}px`);
+                    }
+                    if (continuitySource && continuityLine && continuityClip && explorationMain) {
+                        const pageHeight = document.documentElement.scrollHeight;
+                        if (riverLayer) riverLayer.style.height = `${pageHeight}px`;
+                        if (continuitySvg) {
+                            continuitySvg.style.height = `${pageHeight * 0.92}px`;
+                        }
+                        const matrix = continuitySource.getScreenCTM();
+                        if (!matrix) return;
+                        const geometryKey = `${pageHeight}:${window.innerWidth}:${continuitySource.getAttribute('d')}`;
+                        if (geometryKey !== continuityGeometryKey) {
+                            continuityGeometryKey = geometryKey;
+                            continuityLength = continuitySource.getTotalLength();
+                            continuityLookup = Array.from({ length: 241 }, (_, index) => {
+                                const length = continuityLength * index / 240;
+                                const point = continuitySource.getPointAtLength(length);
+                                return { length, x: point.x, y: point.y };
+                            });
+                        }
+                        const totalLength = continuityLength;
+                        const screenPointAt = (distance) => {
+                            const point = continuitySource.getPointAtLength(distance);
+                            return new DOMPoint(point.x, point.y).matrixTransform(matrix);
+                        };
+                        const cachedScreenY = (point) => matrix.b * point.x + matrix.d * point.y + matrix.f;
+                        const viewportMiddle = window.innerHeight / 2;
+                        const routeStartY = cachedScreenY(continuityLookup[0]);
+                        const routeEndY = cachedScreenY(continuityLookup[continuityLookup.length - 1]);
+                        let travelledLength = 0;
+                        if (viewportMiddle >= routeEndY) {
+                            travelledLength = totalLength;
+                        } else if (viewportMiddle > routeStartY) {
+                            const linearProgress = Math.max(0, Math.min(1, (viewportMiddle - routeStartY) / (routeEndY - routeStartY)));
+                            const expectedLength = linearProgress * totalLength;
+                            let bestScore = Number.POSITIVE_INFINITY;
+                            for (const point of continuityLookup) {
+                                const score = Math.abs(cachedScreenY(point) - viewportMiddle) + Math.abs(point.length - expectedLength) * 0.03;
+                                if (score < bestScore) {
+                                    bestScore = score;
+                                    travelledLength = point.length;
+                                }
+                            }
+                            let searchRadius = totalLength / 240;
+                            for (let pass = 0; pass < 2; pass += 1) {
+                                const searchStart = Math.max(0, travelledLength - searchRadius);
+                                const searchEnd = Math.min(totalLength, travelledLength + searchRadius);
+                                for (let index = 0; index <= 8; index += 1) {
+                                    const candidateLength = searchStart + (searchEnd - searchStart) * index / 8;
+                                    const candidate = screenPointAt(candidateLength);
+                                    const score = Math.abs(candidate.y - viewportMiddle) + Math.abs(candidateLength - expectedLength) * 0.03;
+                                    if (score < bestScore) {
+                                        bestScore = score;
+                                        travelledLength = candidateLength;
+                                    }
+                                }
+                                searchRadius /= 8;
+                            }
+                        }
+                        const progress = travelledLength / totalLength;
+                        const pathPoint = continuitySource.getPointAtLength(travelledLength);
+                        if (riverBoat) {
+                            const nextPoint = continuitySource.getPointAtLength(Math.min(totalLength, travelledLength + totalLength * 0.002));
+                            const previousPoint = continuitySource.getPointAtLength(Math.max(0, travelledLength - totalLength * 0.002));
+                            const screenPoint = new DOMPoint(pathPoint.x, pathPoint.y).matrixTransform(matrix);
+                            const nextScreenPoint = new DOMPoint(nextPoint.x, nextPoint.y).matrixTransform(matrix);
+                            const previousScreenPoint = new DOMPoint(previousPoint.x, previousPoint.y).matrixTransform(matrix);
+                            const motionTime = performance.now();
+                            const elapsed = Math.max(16, motionTime - previousMotionTime);
+                            const scrollSpeed = Math.min(1, Math.abs(window.scrollY - previousScrollY) / elapsed * 0.7);
+                            const sailDirection = nextScreenPoint.x >= previousScreenPoint.x ? 1 : -1;
+                            const boundaryGap = 30;
+                            let boundaryLow = 0;
+                            let boundaryHigh = travelledLength;
+                            for (let iteration = 0; iteration < 18; iteration += 1) {
+                                const boundaryMiddle = (boundaryLow + boundaryHigh) / 2;
+                                const candidate = screenPointAt(boundaryMiddle);
+                                const candidateDistance = Math.hypot(screenPoint.x - candidate.x, screenPoint.y - candidate.y);
+                                if (candidateDistance > boundaryGap) boundaryLow = boundaryMiddle;
+                                else boundaryHigh = boundaryMiddle;
+                            }
+                            const colorBoundaryPoint = continuitySource.getPointAtLength((boundaryLow + boundaryHigh) / 2);
+                            continuityClip.setAttribute('height', Math.max(0, colorBoundaryPoint.y).toFixed(4));
+                            riverBoat.style.left = `${screenPoint.x}px`;
+                            riverBoat.style.top = `${screenPoint.y}px`;
+                            const boatIsVisible = screenPoint.x > -80 && screenPoint.x < window.innerWidth + 80 && screenPoint.y > -80 && screenPoint.y < window.innerHeight + 80 && progress > 0.001;
+                            riverBoat.style.opacity = boatIsVisible ? '1' : '0';
+                            riverBoat.style.setProperty('--sail-direction', `${sailDirection}`);
+                            riverBoat.style.setProperty('--sail-lift', sailDirection > 0 ? '-4px' : '0px');
+                            riverBoat.style.setProperty('--sail-skew', `${sailDirection * (5 + scrollSpeed * 15)}deg`);
+                            riverBoat.style.setProperty('--sail-stretch', `${(1 + scrollSpeed * 0.26).toFixed(3)}`);
+                            riverBoat.style.setProperty('--sail-compress', `${(1 - scrollSpeed * 0.09).toFixed(3)}`);
+                            riverBoat.style.setProperty('--sail-flutter', `${sailDirection * scrollSpeed * -5}deg`);
+                            const boatPagePosition = (window.scrollY + screenPoint.y) / Math.max(1, pageHeight);
+                            const boatPaperColor = samplePageBackground(boatPagePosition);
+                            riverBoat.style.setProperty('--boat-paper-color', `rgb(${boatPaperColor.join(', ')})`);
+                            riverBoat.style.transform = 'translate(-50%, -84%)';
+                            previousScrollY = window.scrollY;
+                            previousMotionTime = motionTime;
+                            clearTimeout(sailSettleTimer);
+                            sailSettleTimer = setTimeout(() => {
+                                riverBoat.style.setProperty('--sail-skew', `${sailDirection * 3}deg`);
+                                riverBoat.style.setProperty('--sail-stretch', '1');
+                                riverBoat.style.setProperty('--sail-compress', '1');
+                                riverBoat.style.setProperty('--sail-flutter', '0deg');
+                            }, 110);
+                        }
+                    }
+                    for (const statement of scrollLitStatements) {
+                        const bounds = statement.getBoundingClientRect();
+                        const isWhyStatement = statement.id === 'why-title';
+                        const isClosingStatement = Boolean(statement.closest('.closing-scene'));
+                        const startPoint = isWhyStatement ? 0.66 : 0.78;
+                        const travelDistance = isWhyStatement ? 0.68 : 0.42;
+                        let progress = Math.max(0, Math.min(1, (window.innerHeight * startPoint - bounds.top) / (window.innerHeight * travelDistance)));
+                        if (isWhyStatement) {
+                            const scene = statement.closest('.why-scene');
+                            const sceneBounds = scene.getBoundingClientRect();
+                            const stickyTravel = Math.max(1, sceneBounds.height - window.innerHeight);
+                            progress = Math.max(0, Math.min(1, -sceneBounds.top / (stickyTravel * 0.84)));
+                        }
+                        if (isClosingStatement) {
+                            const remainingScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight - window.scrollY);
+                            const bottomProgress = 1 - Math.min(1, remainingScroll / (window.innerHeight * 0.4));
+                            progress = Math.max(progress, bottomProgress);
+                        }
+                        const words = [...statement.querySelectorAll('span')];
+                        const litPosition = progress * words.length;
+                        const unlitColor = isWhyStatement ? [184, 157, 137] : [169, 166, 145];
+                        const litColor = isWhyStatement ? [124, 84, 52] : [81, 84, 53];
+                        words.forEach((word, index) => {
+                            const strength = Math.max(0, Math.min(1, litPosition - index));
+                            const wordLitColor = !isWhyStatement && ['source.', 'world.'].includes(word.textContent.trim())
+                                ? [124, 84, 52]
+                                : litColor;
+                            const red = Math.round(unlitColor[0] + (wordLitColor[0] - unlitColor[0]) * strength);
+                            const green = Math.round(unlitColor[1] + (wordLitColor[1] - unlitColor[1]) * strength);
+                            const blue = Math.round(unlitColor[2] + (wordLitColor[2] - unlitColor[2]) * strength);
+                            word.style.color = `rgb(${red}, ${green}, ${blue})`;
+                        });
+                    }
+                    if (coursesScene && courseStackCards.length) {
+                        const bounds = coursesScene.getBoundingClientRect();
+                        const scrollRange = Math.max(1, bounds.height - window.innerHeight);
+                        const sectionProgress = Math.max(0, Math.min(1, -bounds.top / scrollRange));
+                        const entryStarts = [0, 0.5];
+                        courseStackCards.forEach((card, index) => {
+                            const entry = Math.max(0, Math.min(1, (sectionProgress - entryStarts[index]) / 0.28));
+                            const eased = 1 - Math.pow(1 - entry, 3);
+                            card.style.setProperty('--stack-x', '0px');
+                            card.style.setProperty('--stack-y', `${((1 - eased) * window.innerHeight * 0.9).toFixed(2)}px`);
+                            card.style.setProperty('--stack-opacity', '1');
+                        });
+                    }
+                    if (tripsScene && tripStackCards.length) {
+                        const bounds = tripsScene.getBoundingClientRect();
+                        const scrollRange = Math.max(1, bounds.height - window.innerHeight);
+                        const sectionProgress = Math.max(0, Math.min(1, -bounds.top / scrollRange));
+                        const entryStarts = [0, 0.25, 0.5];
+                        tripStackCards.forEach((card, index) => {
+                            const entry = Math.max(0, Math.min(1, (sectionProgress - entryStarts[index]) / 0.28));
+                            const eased = 1 - Math.pow(1 - entry, 3);
+                            card.style.setProperty('--stack-x', '0px');
+                            card.style.setProperty('--stack-y', `${((1 - eased) * window.innerHeight * 0.9).toFixed(2)}px`);
+                            card.style.setProperty('--stack-opacity', '1');
+                        });
+                    }
+                    for (const scene of scenes) {
+                        const bounds = scene.getBoundingClientRect();
+                        const sceneCenter = bounds.top + bounds.height / 2;
+                        const distance = Math.abs(sceneCenter - viewportCenter);
+                        const range = Math.max(window.innerHeight * 0.7, bounds.height * 0.58);
+                        const presence = Math.max(0, Math.min(1, 1 - distance / range));
+                        scene.style.setProperty('--scene-presence', `${(0.78 + presence * 0.22).toFixed(3)}`);
+                        scene.style.setProperty('--scene-lift', `${((1 - presence) * 12).toFixed(2)}px`);
+                    }
+                    ticking = false;
+                };
+
+                const requestSceneMotion = () => {
+                    if (ticking) return;
+                    ticking = true;
+                    requestAnimationFrame(updateSceneMotion);
+                };
+
+                requestSceneMotion();
+                window.addEventListener('scroll', requestSceneMotion, { passive: true });
+                window.addEventListener('resize', requestSceneMotion);
+            }
+        </script>
+    </body>
+</html>
