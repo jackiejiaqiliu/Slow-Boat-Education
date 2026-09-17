@@ -1,94 +1,217 @@
 ---
+import logoDark from '../../../assets/logos/logo-dark.svg?url';
 import onlyTheVeryBestIcon from '../../../assets/icons/only_the_very_best.svg?url';
 import traditionalMeetsClinicalIcon from '../../../assets/icons/traditional_meets_clinical.svg?url';
 import withCareAndIntegrityIcon from '../../../assets/icons/with_care_and_integrity.svg?url';
 import accessibleForAllIcon from '../../../assets/icons/accessible_for_all.svg?url';
+import aboutImage from '../../../assets/images/banner-about.png?url';
 import shuboXuPhoto from '../../../assets/images/shubo-xu.jpg?url';
 import jackieLiuPhoto from '../../../assets/images/jackie-liu.jpg?url';
 import yingZhangPhoto from '../../../assets/images/ying-zhang.jpg?url';
 import nccaomLogo from '../../../assets/logos/nccaom.png?url';
 import zhongyizaixianLogo from '../../../assets/logos/zhongyizaixian.png?url';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/about.css';
+
+const navigationItems = [
+    { label: 'Online Courses', href: '/online-courses/' },
+    { label: 'Study Trips', href: '/study-trips/' },
+    { label: 'About Us', href: '/about/' },
+    { label: 'FAQs', href: '/faqs/' },
+];
+
+const commitments = [
+    { title: 'Only the very best', copy: 'Curated materials and instruction from top educators, clinicians, and universities.', icon: onlyTheVeryBestIcon, className: 'commitment-plate--brown' },
+    { title: 'Traditional meets clinical', copy: 'Grounded in classical theory, taught through modern, real-world clinical practice.', icon: traditionalMeetsClinicalIcon, className: 'commitment-plate--sand' },
+    { title: 'With care and integrity', copy: 'Thoughtful, ethical education designed to honor patients, practitioners, and the medicine.', icon: withCareAndIntegrityIcon, className: 'commitment-plate--green' },
+    { title: 'Accessible for all', copy: 'High-quality resources made approachable across language, geography, and experience levels.', icon: accessibleForAllIcon, className: 'commitment-plate--light' },
+];
 ---
 
-<BaseLayout heroClass="about-hero">
-    <div slot="hero" class="about-banner">
-        <h1>About Us</h1>
-    </div>
-        <div class="about-info">
-            <h3>Based in Chicago, Slow Boat Education brings the best Traditional Chinese Medicine (TCM) education resources from China to licensed practitioners and enthusiasts in the US.</h3>
-            <p>At Slow Boat Education, we believe in the robustness and flexibility of our medicine. Therefore, we aim to connect the often isolated TCM experiences in the US and in China. Our resources are available through unique connections with top TCM universities, doctors, and educators in China. We select and curate materials based on decades of domain mastery and progressive understanding of TCM in the US in the now. With expertise guided by passion and compassion, we break barriers of language, culture, geography, time, and exclusivity.</p>
-        </div>
-        <div class="our-commitment">
-            <h2>Our Commitments</h2>
-            <div class="commitment-items">
-                <div class="commitment-item">
-                    <img src={onlyTheVeryBestIcon} alt="Only the very best">
-                    <h3>Only the very best</h3>
-                    <p>Curated materials and instruction from top educators, clinicians, and universities.</p>
-                </div>
-                <div class="commitment-item">
-                    <img src={traditionalMeetsClinicalIcon} alt="Traditional meets clinical">
-                    <h3>Traditional meets clinical</h3>
-                    <p>Grounded in classical theory, taught through modern, real-world clinical practice.</p>
-                </div>
-                <div class="commitment-item">
-                    <img src={withCareAndIntegrityIcon} alt="With care and integrity">
-                    <h3>With care and integrity</h3>
-                    <p>Thoughtful, ethical education designed to honor patients, practitioners, and the medicine.</p>
-                </div>
-                <div class="commitment-item">
-                    <img src={accessibleForAllIcon} alt="Accessible for all">
-                    <h3>Accessible for all</h3>
-                    <p>High-quality resources made approachable across language, geography, and experience levels.</p>
-                </div>
-            </div>
-        </div>
-        <div class="our-team">
-            <h2>Our Team</h2>
-            <div class="team-cards">
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Slow Boat Education">
+        <meta name="description" content="Slow Boat Education">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Slow Boat Education</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    </head>
+    <body class="about-page">
+        <header class="about-header">
+            <a class="about-brand" href="/" aria-label="Slow Boat Education home"><img src={logoDark} alt="Slow Boat Education"></a>
+            <nav class="about-nav" aria-label="Primary navigation">
+                {navigationItems.map(({ label, href }) => <a href={href}>{label}</a>)}
+            </nav>
+        </header>
 
-                <div class="team-card">
-                    <img class="team-photo" src={shuboXuPhoto} alt="Shubo Xu">
-                    <div class="team-meta">
-                        <h3>Shubo Xu</h3>
-                        <h4>Co-Founder (Clinical & Academic Programs)</h4>
-                        <p>An applied mathematician-turned-TCM doctor, Shubo comes from a family of TCM practitioners. Having learned and trained under multiple expert TCM doctors and acupuncturists, Shubo is currently pursuing his Doctor of Acupuncture degree in Chicago. Well-acquainted to the TCM experience in the US in the now, Shubo is passionate about sharing and promoting the educational resources he has greatly benefited from with his peers. <br><br>
-                        Before pursuing TCM, Shubo earned both his undergraduate and graduate degrees in applied mathematics from the prestigious Courant Institute at New York University. He also gained extensive experience in the startup world through his role as a Technical Analyst at Endless Frontier Labs, an incubator based at NYU Stern School of Business, where he worked closely with early-stage ventures across a range of industries.</p>
+        <main>
+            <section class="about-scene about-hero" data-scene>
+                <div class="about-hero__title" data-reveal="settle"><h1>About Us</h1></div>
+                <figure class="about-hero__image cut-object" data-reveal="image" data-parallax="0.035">
+                    <img src={aboutImage} alt="Traditional Chinese Medicine materials">
+                    <svg class="cut-object__inset" aria-hidden="true"><polygon></polygon></svg>
+                </figure>
+                <p class="about-hero__statement" data-reveal="settle">Based in Chicago, Slow Boat Education brings the best Traditional Chinese Medicine (TCM) education resources from China to licensed practitioners and enthusiasts in the US.</p>
+            </section>
+
+            <section class="about-scene purpose-scene" data-scene aria-labelledby="purpose-title">
+                <div class="purpose-heading" data-reveal="settle"><p>Slow Boat Education</p><h2 id="purpose-title">Our Purpose</h2></div>
+                <div class="purpose-copy" data-reveal="settle">
+                    <p>At Slow Boat Education, we believe in the robustness and flexibility of our medicine. Therefore, we aim to connect the often isolated TCM experiences in the US and in China. Our resources are available through unique connections with top TCM universities, doctors, and educators in China.</p>
+                    <p>We select and curate materials based on decades of domain mastery and progressive understanding of TCM in the US in the now. With expertise guided by passion and compassion, we break barriers of language, culture, geography, time, and exclusivity.</p>
+                </div>
+            </section>
+
+            <section class="about-scene commitments-scene" data-scene aria-labelledby="commitments-title">
+                <div class="commitments-intro" data-reveal="settle"><h2 id="commitments-title">Our Commitments</h2><p>How we select, shape, and share educational resources.</p></div>
+                <div class="commitment-composition">
+                    {commitments.map((commitment, index) => (
+                        <article class={`commitment-plate ${commitment.className}`} data-reveal="plate" style={`--plate-index:${index}`}>
+                            <svg class="cut-object__inset" aria-hidden="true"><polygon></polygon></svg>
+                            <img src={commitment.icon} alt="" aria-hidden="true">
+                            <div><h3>{commitment.title}</h3><p>{commitment.copy}</p></div>
+                        </article>
+                    ))}
+                </div>
+            </section>
+
+            <section class="about-scene team-scene" data-scene aria-labelledby="team-title">
+                <div class="team-heading" data-reveal="settle"><h2 id="team-title">Our Team</h2></div>
+
+                <article class="person-story person-story--shubo">
+                    <figure class="person-photo cut-object" data-reveal="image" data-parallax="0.025">
+                        <img src={shuboXuPhoto} alt="Shubo Xu"><svg class="cut-object__inset" aria-hidden="true"><polygon></polygon></svg>
+                    </figure>
+                    <div class="person-copy" data-reveal="settle">
+                        <header><h3>Shubo Xu</h3><h4>Co-Founder (Clinical &amp; Academic Programs)</h4></header>
+                        <p>An applied mathematician-turned-TCM doctor, Shubo comes from a family of TCM practitioners. Having learned and trained under multiple expert TCM doctors and acupuncturists, Shubo is currently pursuing his Doctor of Acupuncture degree in Chicago. Well-acquainted to the TCM experience in the US in the now, Shubo is passionate about sharing and promoting the educational resources he has greatly benefited from with his peers.</p>
+                        <p>Before pursuing TCM, Shubo earned both his undergraduate and graduate degrees in applied mathematics from the prestigious Courant Institute at New York University. He also gained extensive experience in the startup world through his role as a Technical Analyst at Endless Frontier Labs, an incubator based at NYU Stern School of Business, where he worked closely with early-stage ventures across a range of industries.</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="team-card">
-                    <img class="team-photo" src={jackieLiuPhoto} alt="Jackie Liu">
-                    <div class="team-meta">
-                        <h3>Jackie Liu</h3>
-                        <h4>Co-Founder (Learning Design & Ed-Tech)</h4>
-                        <p>A current faculty member in US higher education and a long-time patient and beneficiary of Traditional Chinese Medicine, Jackie brings her pedagogical expertise to transforming TCM knowledge into structured, learner-centered curricula and support resources. Having spent half of her life in the United States and half in China, she is fluent in both cultural and educational contexts, allowing her to translate traditional knowledge into accessible instruction tailored to the US learner. Trained as a computer scientist and designer, Jackie also designs and builds the educational technology system that enables Slow Boat Education’s courses and digital learning environment. <br><br>
-                        Jackie received her undergraduate and graduate degrees from Cornell University and New York University, and holds a higher education teaching certificate from Harvard University.</p>
+                <article class="person-story person-story--jackie">
+                    <div class="person-copy" data-reveal="settle">
+                        <header><h3>Jackie Liu</h3><h4>Co-Founder (Learning Design &amp; Ed-Tech)</h4></header>
+                        <p>A current faculty member in US higher education and a long-time patient and beneficiary of Traditional Chinese Medicine, Jackie brings her pedagogical expertise to transforming TCM knowledge into structured, learner-centered curricula and support resources. Having spent half of her life in the United States and half in China, she is fluent in both cultural and educational contexts, allowing her to translate traditional knowledge into accessible instruction tailored to the US learner. Trained as a computer scientist and designer, Jackie also designs and builds the educational technology system that enables Slow Boat Education’s courses and digital learning environment.</p>
+                        <p>Jackie received her undergraduate and graduate degrees from Cornell University and New York University, and holds a higher education teaching certificate from Harvard University.</p>
                     </div>
-                </div>
+                    <figure class="person-photo cut-object" data-reveal="image" data-parallax="0.03">
+                        <img src={jackieLiuPhoto} alt="Jackie Liu"><svg class="cut-object__inset" aria-hidden="true"><polygon></polygon></svg>
+                    </figure>
+                </article>
 
-                <div class="team-card">
-                    <img class="team-photo" src={yingZhangPhoto} alt="Ying Zhang">
-                    <div class="team-meta">
-                        <h3>Dr. Ying Zhang</h3>
-                        <h4>Clinical & Academic Advisor</h4>
-                        <p>An NCCAOM diplomate and an Expert Physician in multiple 3A hospitals in Beijing, including the superlative Guang’anmen Hospital of China Academy of Chinese Medical Sciences, Dr. Zhang brings decades of TCM domain expertise to Slow Boat Education. Totaling over eight thousand clinical patients annually, having authored 50+ research papers, and having mentored 40+ graduate students and junior physicians, Dr. Zhang builds her practice upon the clinical, the scholarly, and the educational. At Slow Boat Education, Dr. Zhang leverages her expertise, as well as her exposure to the US TCM experience through NCCAOM, to handpick, curate, and create top-quality educational materials. Dr. Zhang also relies on her unique and vast connections among the TCM circles in China and the US to bring forth exclusive resources that are the most-fitting for the US audience.</p>
+                <article class="person-story person-story--ying">
+                    <figure class="person-photo cut-object" data-reveal="image" data-parallax="0.02">
+                        <img src={yingZhangPhoto} alt="Dr. Ying Zhang"><svg class="cut-object__inset" aria-hidden="true"><polygon></polygon></svg>
+                    </figure>
+                    <div class="person-copy" data-reveal="settle">
+                        <header><h3>Dr. Ying Zhang</h3><h4>Clinical &amp; Academic Advisor</h4></header>
+                        <p>An NCCAOM diplomate and an Expert Physician in multiple 3A hospitals in Beijing, including the superlative Guang’anmen Hospital of China Academy of Chinese Medical Sciences, Dr. Zhang brings decades of TCM domain expertise to Slow Boat Education. Totaling over eight thousand clinical patients annually, having authored 50+ research papers, and having mentored 40+ graduate students and junior physicians, Dr. Zhang builds her practice upon the clinical, the scholarly, and the educational.</p>
+                        <p>At Slow Boat Education, Dr. Zhang leverages her expertise, as well as her exposure to the US TCM experience through NCCAOM, to handpick, curate, and create top-quality educational materials. Dr. Zhang also relies on her unique and vast connections among the TCM circles in China and the US to bring forth exclusive resources that are the most-fitting for the US audience.</p>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="our-partners">
-            <h2>Our Partners</h2>
-            <div class="partners-logo">
-                <img src={nccaomLogo}>
-                <img src={zhongyizaixianLogo}>
-            </div>
-        </div>
+                </article>
+            </section>
 
-    <Fragment slot="scripts">
+            <section class="about-scene partners-scene" data-scene aria-labelledby="partners-title">
+                <div class="partners-heading" data-reveal="settle"><h2 id="partners-title">Our Partners</h2></div>
+                <div class="partners-field cut-object" data-reveal="settle">
+                    <svg class="cut-object__inset" aria-hidden="true"><polygon></polygon></svg>
+                    <img src={nccaomLogo} alt="NCCAOM"><img src={zhongyizaixianLogo} alt="Zhong Yi Zai Xian">
+                </div>
+            </section>
+        </main>
+
+        <footer class="about-footer">
+            <div class="footer-meta"><p>©2026 SLOW BOAT EDUCATION, ALL RIGHTS RESERVED</p><div class="footer-legal"><a href="#">Privacy Policy</a><span>/</span><a href="#">Terms &amp; Conditions</a></div></div>
+            <div class="footer-contact"><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="mailto:info@slowboatedu.com">info@slowboatedu.com</a></div>
+        </footer>
+
         <script>
-            import '../../../scripts/main.js';
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            const updateInset = (target) => {
+                const inset = target.querySelector(':scope > .cut-object__inset');
+                const polygon = inset?.querySelector('polygon');
+                if (!inset || !polygon) return;
+                const insetAmount = 13;
+                const outerCut = 26;
+                const innerCut = outerCut + insetAmount * (Math.SQRT2 - 2);
+                const width = Math.max(1, target.clientWidth - insetAmount * 2);
+                const height = Math.max(1, target.clientHeight - insetAmount * 2);
+                inset.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                polygon.setAttribute('points', `${innerCut},0 ${width - innerCut},0 ${width},${innerCut} ${width},${height - innerCut} ${width - innerCut},${height} ${innerCut},${height} 0,${height - innerCut} 0,${innerCut}`);
+                polygon.setAttribute('fill', 'none');
+                polygon.setAttribute('stroke', 'currentColor');
+                polygon.setAttribute('stroke-width', '1.5');
+                polygon.setAttribute('vector-effect', 'non-scaling-stroke');
+            };
+
+            document.querySelectorAll('.cut-object, .commitment-plate').forEach((target) => {
+                updateInset(target);
+                new ResizeObserver(() => updateInset(target)).observe(target);
+            });
+
+            if (!reducedMotion.matches) {
+                document.documentElement.classList.add('about-motion-ready');
+                const reveals = [...document.querySelectorAll('[data-reveal]')];
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) return;
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    });
+                }, { rootMargin: '-8% 0px -12%', threshold: 0.08 });
+                reveals.forEach((element) => observer.observe(element));
+
+                const parallaxItems = [...document.querySelectorAll('[data-parallax]')];
+                const scenes = [...document.querySelectorAll('[data-scene]')];
+                const values = new WeakMap();
+                let ticking = false;
+                let needsFrame = false;
+                let lastFrame = performance.now();
+
+                const smooth = (element, key, target, delta, response = 125) => {
+                    let state = values.get(element);
+                    if (!state) { state = new Map(); values.set(element, state); }
+                    const current = state.has(key) ? state.get(key) : target;
+                    const next = current + (target - current) * (1 - Math.exp(-delta / response));
+                    state.set(key, next);
+                    if (Math.abs(target - next) > 0.02) needsFrame = true;
+                    return next;
+                };
+
+                const renderMotion = (time) => {
+                    const delta = Math.min(32, Math.max(8, time - lastFrame));
+                    lastFrame = time;
+                    needsFrame = false;
+                    const viewportCenter = window.innerHeight / 2;
+                    parallaxItems.forEach((item) => {
+                        const bounds = item.getBoundingClientRect();
+                        const target = Math.max(-42, Math.min(42, (bounds.top + bounds.height / 2 - viewportCenter) * Number(item.dataset.parallax || 0)));
+                        item.style.setProperty('--image-shift', `${smooth(item, 'parallax', target, delta).toFixed(2)}px`);
+                    });
+                    scenes.forEach((scene) => {
+                        const bounds = scene.getBoundingClientRect();
+                        const distance = Math.abs(bounds.top + bounds.height / 2 - viewportCenter);
+                        const range = Math.max(window.innerHeight * 0.82, bounds.height * 0.55);
+                        const presence = Math.max(0, Math.min(1, 1 - distance / range));
+                        scene.style.setProperty('--scene-lift', `${smooth(scene, 'lift', (1 - presence) * 11, delta, 145).toFixed(2)}px`);
+                    });
+                    if (needsFrame) requestAnimationFrame(renderMotion);
+                    else ticking = false;
+                };
+
+                const requestMotion = () => {
+                    if (ticking) return;
+                    ticking = true;
+                    requestAnimationFrame(renderMotion);
+                };
+                requestMotion();
+                window.addEventListener('scroll', requestMotion, { passive: true });
+                window.addEventListener('resize', requestMotion);
+            }
         </script>
-    </Fragment>
-</BaseLayout>
+    </body>
+</html>
